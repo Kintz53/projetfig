@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+    Alert,
+    Button,
     FlatList,
     Image,
   SafeAreaView,
@@ -8,24 +10,50 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
 import Figurine from '../../modeles/Figurines';
 import { listFig } from '../../data/ListFigurines';
+
+
+
+
+
 function HomeView(): React.JSX.Element {
-  const id=1;
-  const name = 'spartan with drake';
-  const type = 'Titan';
-  const prix : number=90;
-  console.log('Name this a test:',name);
+    const NameOfFig = (name:string) => {
+        console.log('My name is',name);
+    }
+  
+  const [counterID, setCounterID]= useState(0);
+  const NextFig =() => {
+    if (counterID === listFig.length - 1){
+        setCounterID(0);
+    }else{
+        setCounterID(counterID+1);
+        }
+  }
+  const PrevFig=() => {
+    if (counterID === 0){
+        setCounterID(listFig.length - 1);
+    }else {
+            setCounterID(counterID - 1);
+        }  
+    }
   return (
     <View> 
-        <FlatList
-            data={listFig}
-            keyExtractor={item =>  item.id.toString()}
-            renderItem={({item}) => <FigurineInfo id={item.id} name={item.name} type={item.type} prix={item.prix} src={item.src}/>}
+        <Text>The value of the counter is {counterID}</Text>
+        <Button
+            title="next miniature"
+            onPress={() => NextFig()}
         />
+      <Button
+        title="previous miniature"
+        onPress={() => PrevFig()}
+      />
+      <FigurineInfo id={listFig[counterID].id} name={listFig[counterID].name} type={listFig[counterID].type} prix={listFig[counterID].prix} src={listFig[counterID].src} Onclick={NameOfFig}/>
+       
         
     </View>
    
@@ -33,20 +61,24 @@ function HomeView(): React.JSX.Element {
  
 }
 
-const FigurineInfo = ({name,type,prix,src}: Figurine) => {
+const FigurineInfo = ({id,name,type,prix,src,Onclick}: Figurine) => {
     return( 
         <View>
             <Text>This is a {type} miniature who cost {prix} euros</Text>
             <Text>That the name of the miniature : {name}</Text>
-            <Image source={src} style={styles.ImageFig}/>
+            <TouchableOpacity onPress={()=> Onclick(name)}>
+            
+
+            <Image source={src} style={styles.ImageFig}/>      
+            </TouchableOpacity>
         </View>
 );
 }
 
 const styles = StyleSheet.create({
     ImageFig :{
-        width: 300,
-        height: 400,
+        width: 200,
+        height: 300,
     },
     container : {
         justifyContent: 'center',
