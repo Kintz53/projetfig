@@ -22,32 +22,6 @@ type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
 function HomeView(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -55,11 +29,11 @@ function HomeView(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (<view>
-    <text>
+  return (<View>
+    <Text>
         Hello world this is my home view
-    </text>
-  </view>
+    </Text>
+  </View>
    
   );
 }
