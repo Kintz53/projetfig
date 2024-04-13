@@ -47,7 +47,7 @@ function HomeView(): React.JSX.Element {
 }
  const styles = StyleSheet.create({
     ImageFig :{
-        width: 200,
+        width: 600,
         height: 200,
     }
   });
