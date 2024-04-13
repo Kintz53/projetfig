@@ -1,6 +1,7 @@
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
+    FlatList,
     Image,
   SafeAreaView,
   ScrollView,
@@ -10,41 +11,29 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-type FigurineInfoType ={
-    name: string;
-    type : string;
-    prix : number;
-    src : any;
-
-}
+import Figurine from '../../modeles/Figurines';
+import { listFig } from '../../data/ListFigurines';
 function HomeView(): React.JSX.Element {
-  
+  const id=1;
   const name = 'spartan with drake';
   const type = 'Titan';
   const prix : number=90;
+  console.log('Name this a test:',name);
   return (
-    <View>
-        <FigurineInfo name={name} type={type} prix={prix} src={require('../../assets/Images/SpartanDrake.jpg')}/>
-        <FigurineInfo name={'Ork'} type={'heavy infantry'} prix={'5'} src={require('../../assets/Images/ork.jpg')}/>
+    <View> 
+        <FlatList
+            data={listFig}
+            keyExtractor={item =>  item.id.toString()}
+            renderItem={({item}) => <FigurineInfo id={item.id} name={item.name} type={item.type} prix={item.prix} src={item.src}/>}
+        />
+        
     </View>
    
   );
  
 }
 
-const FigurineInfo = ({name,type,prix,src}: FigurineInfoType) => {
+const FigurineInfo = ({name,type,prix,src}: Figurine) => {
     return( 
         <View>
             <Text>This is a {type} miniature who cost {prix} euros</Text>
