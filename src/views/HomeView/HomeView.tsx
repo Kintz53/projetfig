@@ -55,7 +55,12 @@ function HomeView(): React.JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  return (
-    <HomeView/>
+  return (<view>
+    <text>
+        Hello world this is my home view
+    </text>
+  </view>
+   
   );
 }
+export default HomeView;

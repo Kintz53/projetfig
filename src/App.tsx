@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import HomeView from './views/HomeView/HomeView';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -65,7 +66,7 @@ function App(): React.JSX.Element {
   return (
     <HomeView/>
   );
-}
+}0
  <
 const styles = StyleSheet.create({
   sectionContainer: {
