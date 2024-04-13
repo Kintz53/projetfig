@@ -22,40 +22,42 @@ import {
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
+type FigurineInfoType ={
+    name: string;
+    type : string;
+    prix : number;
+    src : any;
 
+}
 function HomeView(): React.JSX.Element {
   
   const name = 'spartan with drake';
   const type = 'Titan';
-  const prix : number=90;return (
-  <View>
-        <FigurineInfo name={name} type={type} prix={prix}/>,
-  </View>
+  const prix : number=90;
+  return (
+    <View>
+        <FigurineInfo name={name} type={type} prix={prix} src={require('../../assets/Images/SpartanDrake.jpg')}/>
+        <FigurineInfo name={'Ork'} type={'heavy infantry'} prix={'5'} src={require('../../assets/Images/ork.jpg')}/>
+    </View>
    
   );
  
-};
-
-const FigurineInfo =(props: any) => {
-<View>
-    <Text>
-        This is a {props.type} miniature who cost {props.prix} euros . 
-    </Text>
-    <View style={styles.container}>
-        <Text>
-        
-            That the name of the miniature :{props.name}
-            <Image source={require('../../assets/Images/SpartanDrake.jpg')} style={styles.ImageFig}/>
-        
-        </Text>
-    </View>
-</View>
-
 }
- const styles = StyleSheet.create({
+
+const FigurineInfo = ({name,type,prix,src}: FigurineInfoType) => {
+    return( 
+        <View>
+            <Text>This is a {type} miniature who cost {prix} euros</Text>
+            <Text>That the name of the miniature : {name}</Text>
+            <Image source={src} style={styles.ImageFig}/>
+        </View>
+);
+}
+
+const styles = StyleSheet.create({
     ImageFig :{
-        width: 200,
-        height: 500,
+        width: 300,
+        height: 400,
     },
     container : {
         justifyContent: 'center',
