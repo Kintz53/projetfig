@@ -4,6 +4,7 @@ type Figurine={
     type : string;
     prix : number;
     src : any;
+    Onclick : any;
 
 }
 export default Figurine;

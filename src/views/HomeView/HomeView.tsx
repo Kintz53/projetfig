@@ -42,19 +42,23 @@ function HomeView(): React.JSX.Element {
         }  
     }
   return (
-    <View> 
-        <Text>The value of the counter is {counterID}</Text>
-        <Button
-            title="next miniature"
-            onPress={() => NextFig()}
-        />
-      <Button
-        title="previous miniature"
-        onPress={() => PrevFig()}
-      />
-      <FigurineInfo id={listFig[counterID].id} name={listFig[counterID].name} type={listFig[counterID].type} prix={listFig[counterID].prix} src={listFig[counterID].src} Onclick={NameOfFig}/>
-       
-        
+    <View style={styles.main_container}>
+        <View style={styles.title_container}>
+            <Text style={styles.TextTitle}> Le petit coin de la Figurine</Text> 
+        </View>
+      <View style={styles.figurine_container}>
+            <FigurineInfo id={listFig[counterID].id} name={listFig[counterID].name} type={listFig[counterID].type} prix={listFig[counterID].prix} src={listFig[counterID].src} Onclick={NameOfFig}/>
+       </View>  
+       <View style={styles.button_container}>
+            <Button
+                title="next miniature"
+                onPress={() => NextFig()}
+            />
+            <Button
+                title="previous miniature"
+                onPress={() => PrevFig()}
+            />
+        </View>
     </View>
    
   );
@@ -63,7 +67,7 @@ function HomeView(): React.JSX.Element {
 
 const FigurineInfo = ({id,name,type,prix,src,Onclick}: Figurine) => {
     return( 
-        <View>
+        <>
             <Text>This is a {type} miniature who cost {prix} euros</Text>
             <Text>That the name of the miniature : {name}</Text>
             <TouchableOpacity onPress={()=> Onclick(name)}>
@@ -71,7 +75,7 @@ const FigurineInfo = ({id,name,type,prix,src,Onclick}: Figurine) => {
 
             <Image source={src} style={styles.ImageFig}/>      
             </TouchableOpacity>
-        </View>
+        </>
 );
 }
 
@@ -83,6 +87,28 @@ const styles = StyleSheet.create({
     container : {
         justifyContent: 'center',
         alignItems: 'center',
-      }
+      },
+    TextTitle : { fontSize:26,
+        fontWeight:'bold',
+        color:'rgb(200,0,0)',
+
+      },
+    title_container : {
+        flex:1,
+        alignItems:'center'
+        },
+    figurine_container :{
+        flex:4,
+        justifyContent :'center',
+        alignItems:'center'    },
+    button_container :{
+        flex:1,
+        flexDirection:'row',
+        justifyContent:'space-around'
+    },
+    main_container:{
+        flex:1,
+
+    },
   });
 export default HomeView;
