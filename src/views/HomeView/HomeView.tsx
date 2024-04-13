@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type {PropsWithChildren} from 'react';
+import * as communStyle from '../../utils/communStyle'
 import {
     Alert,
     Button,
@@ -50,14 +51,13 @@ function HomeView(): React.JSX.Element {
             <FigurineInfo id={listFig[counterID].id} name={listFig[counterID].name} type={listFig[counterID].type} prix={listFig[counterID].prix} src={listFig[counterID].src} Onclick={NameOfFig}/>
        </View>  
        <View style={styles.button_container}>
-            <Button
-                title="next miniature"
-                onPress={() => NextFig()}
-            />
-            <Button
-                title="previous miniature"
-                onPress={() => PrevFig()}
-            />
+         <TouchableOpacity style={styles.buttonNextPrevious}onPress={()=> PrevFig()}>
+            <Image source={require('../../assets/Images/icons/fleche_gauche.png')} style={styles.iconbutton} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonNextPrevious} onPress={()=> NextFig()}>
+            <Image source={require('../../assets/Images/icons/fleche_droite.png')}style={styles.iconbutton} />
+        </TouchableOpacity>
+        
         </View>
     </View>
    
@@ -109,6 +109,16 @@ const styles = StyleSheet.create({
     main_container:{
         flex:1,
 
+    },
+    iconbutton:{
+        width:60,
+        height:60,
+        alignItems:'center',
+    },
+    // @ts-ignore
+    buttonNextPrevious:{
+        ...communStyle.elevationButton,
+        ...communStyle.roundedButton
     },
   });
 export default HomeView;
