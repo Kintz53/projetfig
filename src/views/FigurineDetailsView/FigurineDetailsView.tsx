@@ -23,20 +23,22 @@ import { useNavigation } from '@react-navigation/native';
 
 
 
-function HomeView(props : any): React.JSX.Element {
-    const ViewFigurineDetails = (Id : number) => {
-        props.navigation.navigate("Home2",
-        {
-            id : Id,
-         }
-    )};
+function FigurineDetailsView(props : any): React.JSX.Element {
+    const { id} = props.route.params;
     const NameOfFig = (name:string) => {
         console.log('My name is',name);
     }
     const navigation = useNavigation();
     console.log('Props : ', props);
 
-  const [counterID, setCounterID]= useState(0);
+    const ViewFigurineDetails = (Id : number) => {
+        props.navigation.navigate("Home2",
+        {
+            id : Id,
+         }
+    )};
+    
+  const [counterID, setCounterID]= useState(id -1);
   const NextFig =() => {
     if (counterID === listFig.length - 1){
         setCounterID(0);
@@ -44,30 +46,17 @@ function HomeView(props : any): React.JSX.Element {
         setCounterID(counterID+1);
         }
   }
-  const PrevFig=() => {
-    if (counterID === 0){
-        setCounterID(listFig.length - 1);
-    }else {
-            setCounterID(counterID - 1);
-        }  
-    }
+  
   return (
         <View style={styles.main_container}>
         <View style={styles.title_container}>
-            <Text style={styles.TextTitle}> Le petit coin de la Figurine</Text> 
+            <Text style={styles.TextTitle}> Détails de la figurine "{listFig[counterID].name}"</Text> 
         </View>
       <View style={styles.figurine_container}>
+        <Text> {id} </Text>
             <FigurineInfo id={listFig[counterID].id} name={listFig[counterID].name} type={listFig[counterID].type} prix={listFig[counterID].prix} src={listFig[counterID].src} Onclick={ViewFigurineDetails}/>
        </View>  
-       <View style={styles.button_container}>
-         <TouchableOpacity style={styles.buttonNextPrevious}onPress={()=> PrevFig()}>
-            <Image source={require('../../assets/Images/icons/fleche_gauche.png')} style={styles.iconbutton} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonNextPrevious} onPress={()=> NextFig()}>
-            <Image source={require('../../assets/Images/icons/fleche_droite.png')}style={styles.iconbutton} />
-        </TouchableOpacity>
-        
-        </View>
+    
     </View>
    
   );
@@ -90,8 +79,8 @@ const FigurineInfo = ({id,name,type,prix,src,Onclick}: Figurine) => {
 
 const styles = StyleSheet.create({
     ImageFig :{
-        width: 200,
-        height: 300,
+        width: 300,
+        height: 500,
     },
     container : {
         justifyContent: 'center',
@@ -130,4 +119,4 @@ const styles = StyleSheet.create({
         ...communStyle.roundedButton
     },
   });
-export default HomeView;
+ export default FigurineDetailsView;
