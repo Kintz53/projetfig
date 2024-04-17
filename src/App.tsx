@@ -40,7 +40,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeView} options={{title :'',headerShown : false }}/>
-      <HomeStack.Screen name="Home2" component={FigurineDetailsView} options={{title :'' ,headerShown : false }}/>
+      <HomeStack.Screen name="Home2" component={FigurineDetailsView} options={{title :''  }}/>
     </HomeStack.Navigator>
   );
 }

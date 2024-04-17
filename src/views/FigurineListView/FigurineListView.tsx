@@ -24,12 +24,13 @@ import { useNavigation } from '@react-navigation/native';
 
 
 function FigurineListView(props : any): React.JSX.Element {
-    const ViewFigurineDetails = (Id : number, nameFigurine : any, srcFigurine: any,) => {
+    const ViewFigurineDetails = (Id : number, nameFigurine : any, srcFigurine: any, typeFigurine : any) => {
         props.navigation.navigate("Home2",
         {
             id : Id,
             name:nameFigurine,
-            src : srcFigurine
+            src : srcFigurine,
+            Type : typeFigurine
          }
     )};
     
@@ -53,19 +54,65 @@ const FigurineItem = ( props : any) => {
     const {Figurine , Onclick}= props;
     return ( 
         <View>
-            <TouchableOpacity onPress={()=> Onclick(Figurine.id,Figurine.name,Figurine.src)} >
+            <TouchableOpacity style={styles.main_container} onPress={()=> Onclick(Figurine.id,Figurine.name,Figurine.src)} >
             <Image source={Figurine.src } style={styles.FigurineImage}/>
-            <Text> 
-                Name : {Figurine.name}
-            </Text>
+            <View style={styles.content_container}>
+                <View style={styles.header_container}>
+                    <Text style={styles.title_text}> 
+                        {Figurine.name}
+                    </Text>
+                </View>
+                <View>
+                    <Text style={styles.type_text}>
+                            Type : {Figurine.type}
+                    </Text>
+                </View>
+            </View>
             </TouchableOpacity>
         </View>
     )
 }
 const styles = StyleSheet.create({
     FigurineImage :{
-        width:50,
-        height:100,
+        width:60,
+        height:80,
+        margin : 5,
+        borderRadius : 30,
+    },
+    details_container : {
+        marginRight : 10,
+        marginLeft : 10,
+        borderRadius: 10,
+        ...communStyle.elevationButton
+    },
+    main_container :{
+        flexDirection :'row'
+    },
+    divider_figurine : {
+        height : 1,
+        width : '80%',
+        backgroundColor : '#CED0CE',
+        marginLeft:'14%'
+    },
+    content_container :{
+        flex : 1,
+        margin : 5,
+        backgroundColor : '#00ffff',
+    },
+    header_container : {
+        flex : 3,
+        flexDirection :'row'
+    },
+    title_text : {
+        fontWeight :'bold',
+        fontSize : 20,
+        flex : 1,
+    },
+    type_text :{
+        fontWeight :'bold',
+        fontStyle :'italic',
+        fontSize:12,
+        color : "#666666",
     },
     ImageFig :{
         width: 300,
@@ -80,28 +127,7 @@ const styles = StyleSheet.create({
         color:'rgb(200,0,0)',
 
       },
-    title_container : {
-        flex:1,
-        alignItems:'center'
-        },
-    figurine_container :{
-        flex:4,
-        justifyContent :'center',
-        alignItems:'center'    },
-    button_container :{
-        flex:1,
-        flexDirection:'row',
-        justifyContent:'space-around'
-    },
-    main_container:{
-        flex:1,
-
-    },
-    iconbutton:{
-        width:60,
-        height:60,
-        alignItems:'center',
-    },
+    
     // @ts-ignore
     buttonNextPrevious:{
         ...communStyle.elevationButton,
