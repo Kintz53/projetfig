@@ -78,6 +78,7 @@ const styles = StyleSheet.create({
         height:80,
         margin : 5,
         borderRadius : 30,
+        backgroundColor : '#00ffff'
     },
     details_container : {
         marginRight : 10,
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
     content_container :{
         flex : 1,
         margin : 5,
+        borderRadius:10,
         backgroundColor : '#00ffff',
     },
     header_container : {
