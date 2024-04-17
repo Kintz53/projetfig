@@ -24,10 +24,12 @@ import { useNavigation } from '@react-navigation/native';
 
 
 function HomeView(props : any): React.JSX.Element {
-    const ViewFigurineDetails = (Id : number) => {
+    const ViewFigurineDetails = (Id : number, nameFigurine : any, srcFigurine: any,) => {
         props.navigation.navigate("Home2",
         {
             id : Id,
+            name:nameFigurine,
+            src : srcFigurine
          }
     )};
     const NameOfFig = (name:string) => {
