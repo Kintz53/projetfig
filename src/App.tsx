@@ -50,8 +50,8 @@ const FigurineStack = createNativeStackNavigator();
 function FigurineStackScreen() {
   return (
     <FigurineStack.Navigator>
-      <FigurineStack.Screen name="MyFigurine" component={FigurineListView} />
-      <FigurineStack.Screen name="Details" component={FigurineListView} />
+      <FigurineStack.Screen name="MyFigurine" component={FigurineListView} options={{title :'Figurines que je préfère' }} />
+      <FigurineStack.Screen name="Home2" component={FigurineDetailsView} options={{title :''}}/>
     </FigurineStack.Navigator>
   );
 }
