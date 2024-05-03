@@ -11,6 +11,6 @@ export const listFig =[
     {name : 'roi sur wyrm', type:'Titan',prix:100, src:require('../assets/Images/roi.png'), id:10},
     {name : 'Shabti',type:'Heavy infantry',prix:10, src:require('../assets/Images/shabti.png'), id:11},
     {name : 'spartan', type:'infantry',prix:6,src:require('../assets/Images/spartan.png'),id:12},
-    {name : 'Hero StormCast', type:'Hero',prix:80, src:require('../assets/Images/stormcast.png'), id:13},
+    {name : 'Hero StormCast', type:'Hero',prix:70, src:require('../assets/Images/stormcast.png'), id:13},
     
 ]

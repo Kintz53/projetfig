@@ -68,7 +68,7 @@ function HomeView(props : any): React.JSX.Element {
         <TouchableOpacity style={styles.buttonNextPrevious} onPress={()=> NextFig()}>
             <Image source={require('../../assets/Images/icons/fleche_droite.png')}style={styles.iconbutton} />
         </TouchableOpacity>
-        
+        0
         </View>
     </View>
    
@@ -82,8 +82,7 @@ const FigurineInfo = ({id,name,type,prix,src,Onclick}: Figurine) => {
             <Text>This is a {type} miniature who cost {prix} euros</Text>
             <Text>That the name of the miniature : {name}</Text>
             <TouchableOpacity onPress={()=> Onclick(id)}>
-            
-
+        
             <Image source={src} style={styles.ImageFig}/>      
             </TouchableOpacity>
         </>
